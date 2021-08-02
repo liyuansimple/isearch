@@ -1,6 +1,14 @@
+/*
+ * @Author: your name
+ * @Date: 2021-07-22 16:30:23
+ * @LastEditTime: 2021-07-27 15:04:00
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \SCRM-Admin-Webd:\work\project\isearch\src\router\index.js
+ */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import layout from '@/layout'
 
 Vue.use(VueRouter)
 
@@ -8,16 +16,40 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    redirect: '/main',
+    component: layout,
+    children: [
+      {
+        path: 'main',
+        name: 'main',
+        component: () => import(/* webpackChunkName: "main" */ '@/views/main.vue'),
+      },
+      {
+        path: '/doc',
+        name: 'doc',
+        component: () => import(/* webpackChunkName: "doc" */ '@/views/doc.vue')
+      },
+      {
+        path: '/tools',
+        name: 'tools',
+        component: () => import(/* webpackChunkName: "tools" */ '@/views/tools.vue')
+      },
+      {
+        path: '/blogs',
+        name: 'blogs',
+        component: () => import(/* webpackChunkName: "blogs" */ '@/views/blogs.vue')
+      },
+      {
+        path: '/about',
+        name: 'About',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      }
+    ]
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  
 ]
 
 const router = new VueRouter({
