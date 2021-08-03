@@ -1,0 +1,27 @@
+$space: 5, 10, 15, 20, 25, 30, 35, 40;
+@each $s in $space {
+  .mt-#{$s} {
+    margin-top: #{$s}px
+  }
+  .mr-#{$s} {
+    margin-right: #{$s}px
+  }
+  .mb-#{$s} {
+    margin-bottom: #{$s}px
+  }
+  .ml-#{$s} {
+    margin-left: #{$s}px
+  }
+  .pt-#{$s} {
+    padding-top: #{$s}px
+  }
+  .pr-#{$s} {
+    padding-right: #{$s}px
+  }
+  .pb-#{$s} {
+    padding-bottom: #{$s}px
+  }
+  .pl-#{$s} {
+    padding-left: #{$s}px
+  }
+}
