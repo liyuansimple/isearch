@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-22 17:27:24
- * @LastEditTime: 2021-07-22 17:32:12
+ * @LastEditTime: 2021-09-06 14:33:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \SCRM-Admin-Webd:\work\project\isearch\vue.config.js
@@ -20,5 +20,22 @@ module.exports = {
         '@': resolve('src')
       }
     }
+  },
+  devServer: {
+    open: false,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    proxy: {
+      '/dev-api': {
+        target: process.env.VUE_APP_BASE_PROXY_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/dev-api': ''
+        }
+      }
+    }
+    // before: require('./mock/mock-server.js')
   },
 }

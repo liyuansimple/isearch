@@ -1,17 +1,21 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-22 16:30:23
- * @LastEditTime: 2021-08-12 17:06:00
+ * @LastEditTime: 2021-09-06 14:43:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \SCRM-Admin-Webd:\work\project\isearch\src\views\About.vue
 -->
 <template>
-  <span>1</span>
+  <section>
+    <el-button @click="download">下载</el-button>
+  </section>
 </template>
 
 <script>
 import indexDB from '@/indexDb'
+import { downloadFile } from '@/utils/download'
+import { exportFile } from '@/api/index'
 export default {
   created() {
     indexDB.openDB('test1', 1,(db) => {
@@ -24,6 +28,13 @@ export default {
       indexDB.createStore(db, 'student')
       indexDB.createStore(db, 'sex')
     })
+  },
+  methods: {
+    download() {
+      exportFile().then(res => {
+        downloadFile(res, 'name.xlsx')
+      })
+    }
   }
 }
 </script>
