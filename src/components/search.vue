@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-22 16:40:53
- * @LastEditTime: 2021-07-27 09:32:11
+ * @LastEditTime: 2021-09-07 09:55:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \SCRM-Admin-Webd:\work\project\isearch\src\components\header.vue
@@ -10,11 +10,10 @@
   <div class="serch-group">
     <div class="search-layout">
       <div class="search-container">
-        <el-menu :default-active="activeName" class="el-menu-demo" mode="horizontal" @select="handleClick">
+        <el-menu :default-active="activeName" class="el-menu-demo" mode="horizontal">
           <el-menu-item index="1">百度</el-menu-item>
-          <el-menu-item index="2">Google</el-menu-item>
-          <el-menu-item index="3">Github</el-menu-item>
-          <el-menu-item index="4">NPM</el-menu-item>
+          <el-menu-item index="2">Github</el-menu-item>
+          <el-menu-item index="3">NPM</el-menu-item>
         </el-menu>
         <el-form :inline="true" style="margin-top: 10px">
           <el-form-item>
@@ -38,11 +37,27 @@ export default {
     }
   },
   methods: {
-    handleClick() {
-
-    },
+    /**
+     * @description: 搜索
+     * @param {*}
+     * @return {*}
+     */    
     searchEvent() {
-
+      let url = ''
+      switch (this.activeName) {
+        case '1': // baidu
+          url = `https://www.baidu.com?wd=${this.search}`
+          break;
+        case '2': // Github
+          url = `https://github.com/search?q=${this.search}`
+          break;
+        case '3': // npm
+          url = `https://www.npmjs.com/search?q=${this.search}`
+          break;
+        default:
+          break;
+      }
+      window.open(url)
     }
   }
 }

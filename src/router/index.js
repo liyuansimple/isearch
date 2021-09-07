@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-22 16:30:23
- * @LastEditTime: 2021-07-27 15:04:00
+ * @LastEditTime: 2021-09-07 10:08:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \SCRM-Admin-Webd:\work\project\isearch\src\router\index.js
@@ -49,7 +49,6 @@ const routes = [
       }
     ]
   },
-  
 ]
 
 const router = new VueRouter({
@@ -58,4 +57,8 @@ const router = new VueRouter({
   routes
 })
 
+// 路由后置方法
+router.afterEach(() => {
+  window.scrollTo(0,0)
+})
 export default router

@@ -13,7 +13,7 @@
       <el-menu-item index="/doc">文档</el-menu-item>
       <el-menu-item index="/tools">在线工具</el-menu-item>
       <el-menu-item index="/blogs">博客</el-menu-item>
-      <el-menu-item index="/about">关于</el-menu-item>
+      <el-menu-item index="/about">案例</el-menu-item>
     </el-menu>
   </div>
   
